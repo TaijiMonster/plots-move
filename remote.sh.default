@@ -6,20 +6,21 @@ MACHINE="plotter-1"
 
 # For dual cpu machine with 2 temporary final folders
 PLOT_PATHd1="/mnt/nvme/final1/" #Temporary final folder 1
-PLOT_PATHd2="/mnt/nvme/final2/" #Temporary final folder 2
+PLOT_PATHd2="/mnt/nvme/final2/" #Temporary final folder 2, point to a dummy folder with no files if you only have one temporary final folder
 
 # For local/remote transfer, recommended max 2 transfer per drive/destination but best is 1 transfer per drive/destination
 TARGETd1="/mnt/disk-s9-9/" #Job 1 PRIMARY destination
 TARGET2d1="/mnt/disk-s9-9/" #Job 1 BACKUP destination
-TARGETd2="/mnt/disk-s9-9/" #Job 2 PRIMARY destination
-TARGET2d2="/mnt/disk-s9-9/" #Job 2 PRIMARY destination
+TARGETd2="/mnt/disk-s9-9/" #Job 2 PRIMARY destination, point to a dummy folder with no files if you only have one temporary final folder
+TARGET2d2="/mnt/disk-s9-9/" #Job 2 PRIMARY destination, point to a dummy folder with no files if you only have one temporary final folder
 
-# Choose your plot's size
+# Choose your plot's size (size is in 1K blocks or 1024 bytes)
 #reqSpace=106400000 #k32
-#reqSpace=11500000 #k29
-reqSpace=51600000 #k31
+#reqSpace=51600000 #k31
+#reqSpace=25000000 #k30
+reqSpace=11500000 #k29
 
-# As rclone runs pretty fast, CTRL-C wont help and causes many partial transfer, if you want to stop the transfer you can set this to 1
+# As rclone runs pretty fast, CTRL-C won't help and causes many partial transfer which need manual deletion, if you want to stop the transfer you can set this to 1
 QUITd1=0 #For Job 1
 QUITd2=0 #For Job 2
 
