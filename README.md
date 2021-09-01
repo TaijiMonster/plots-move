@@ -8,7 +8,8 @@ Automate your plot transfer from temporary final folder to farming folder - supp
 `cd plots-move`
 `cp remote.sh.default remote.sh`
 `sudo chmod +x *.sh`
-# Create a tmux/screeen session with 2 panes
+
+### Create a tmux/screeen session with 2 panes
 `./upload1.sh` # On first pane
 `./upload2.sh` # On second pane
 
