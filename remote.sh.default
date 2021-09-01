@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-VERSION="TaijiMonster Transfer 1.00"
+VERSION="TaijiMonster Transfer 1.0"
 
 # Your machine name
 MACHINE="plotter-1"
