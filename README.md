@@ -7,7 +7,7 @@ Automate your plot transfer from temporary final folder to farming folder - supp
 1) `git clone https://github.com/TaijiMonster/plots-move.git`
 2) `cd plots-move`
 3) `cp remote.sh.default remote.sh`
-4) Edit `nano remote.sh`, simple self explainatory notes in the file
+4) Edit `nano remote.sh`, simple self explanatory notes in the file
 5) Edit `nano discord.sh`, put in your own Discord webhook
 6) `sudo chmod +x *.sh`
 7) Create a tmux/screeen session with 2 panes
