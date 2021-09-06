@@ -23,7 +23,7 @@ do
                 do
                         # check if there's quit loop command
                         if (( QUITd1 == 0 )); then
-                                echo -e "***$VERSION***\nDEST Folder ==> PRIMARY: $TARGETd1 BACKUP: $TARGET2d1\nUsing *BACKUP DESTINATION* $TARGET2d1 - CHANGE PRIMARY DESTINATION IMMEDIATELY !!!"
+                                echo -e "***$VERSION***\nDEST Folder ==> PRIMARY: $TARGETd1 BACKUP: $TARGET2d1\nUsing *BACKUP DESTINATION* $TARGET2d1 | LEFT: $availSpaceBackup - CHANGE PRIMARY DESTINATION IMMEDIATELY !!!"
                                 rclone move --ignore-checksum --transfers=1 --no-traverse --progress $PLOT_PATHd1$FILE $TARGET2d1
                                 clear
                                 break
