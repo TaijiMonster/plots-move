@@ -15,7 +15,7 @@ do
                 if (( $outSpaced1 < 6 )); then # PRIMARY space out of space send notification for 5 times
                         echo "NOT ENOUGH PRIMARY SPACE" >&2
                         DISCORD="*** $MACHINE WARNING NOTIFICATION #$outSpaced1*** $TARGETd1 - PRIMARY RAN OUT OF SPACE !!! *** WARNING ***"
-                        source discord.sh "$DISCORD"
+                        source discordALERT.sh "$DISCORD"
                 fi
         while [ true ]
         do
@@ -63,7 +63,7 @@ do
                         if (( availSpace < ( reqSpace*5 ) )) && [ "$TARGETd1" = "$TARGET2d1" ]; then
                                 echo "LESS THAN 5 PLOTS' PRIMARY SPACE AVAILABLE - $availSpace2" >&2
                                 DISCORD2="*** $MACHINE PRE-WARNING *** $TARGETd1 LEFT LESS THAN 5 PLOTS' SPACE !!! *** PRE-WARNING ***"
-                                source discord.sh "$DISCORD2"
+                                source discordALERT.sh "$DISCORD2"
                         fi
                         clear
                     fi
