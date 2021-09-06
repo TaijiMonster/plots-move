@@ -5,11 +5,11 @@ VERSION="TaijiMonster Transfer 2.0"
 MACHINE="plotter-1"
 
 # For single temporary final folders
-PLOT_PATHd1="/mnt/nvme/final1/" #Temporary final folder 1
+PLOT_PATHd1="/mnt/nvme/YOUR-TEMPORARY-FINAL-FOLDER/" #Temporary final folder 1
 
 # For local/remote transfer, recommended max 2 transfer per drive/destination but best is 1 transfer per drive/destination
-TARGETd1="/mnt/disk-s9-9/" #Job 1 PRIMARY destination
-TARGET2d1="/mnt/disk-s9-9/" #Job 1 BACKUP destination
+TARGETd1="/mnt/YOUR-PRIMARY-FINAL-FARMING-FOLDER/" #Job 1 PRIMARY destination
+TARGET2d1="/mnt/YOUR-BACKUP-FINAL-FARMING-FOLDER/" #Job 1 BACKUP destination
 
 # Choose your plot's size (size is in 1K blocks or 1024 bytes)
 #reqSpace=106400000 #k32
