@@ -5,6 +5,7 @@ do
         clear
         # read transfer folder
         source remote.sh
+        source version
 
         # check disk space
         availSpace=$(df $TARGETd1 | awk 'NR==2 { print $4 }')
