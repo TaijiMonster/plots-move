@@ -70,6 +70,7 @@ do
                 done
                 clear
                 availSpace2=$(df -h $TARGETd1 | awk 'NR==2 { print $4 }')
+                availSpaceBackup=$(df -h $TARGET2d1 | awk 'NR==2 { print $4 }')
                 echo -e "***$VERSION***\nNo PRIMARY job | SOURCE: $PLOT_PATHd1 | DEST: $TARGETd1, wait 30 seconds | Space Available: $availSpace2 | BACKUP Space $TARGET2d1: $availSpaceBackup"
                 echo ""
                 REFRESH=$(date -d "+30 seconds")
