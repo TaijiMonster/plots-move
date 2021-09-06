@@ -1,18 +1,13 @@
 #!/usr/bin/env bash
-VERSION="TaijiMonster Transfer 1.0"
-
 # Your machine name
 MACHINE="plotter-1"
 
-# For dual cpu machine with 2 temporary final folders
-PLOT_PATHd1="/mnt/nvme/final1/" #Temporary final folder 1
-PLOT_PATHd2="/mnt/nvme/final2/" #Temporary final folder 2, point to a dummy folder with no files if you only have one temporary final folder
+# For single temporary final folders
+PLOT_PATHd1="/mnt/nvme/YOUR-TEMPORARY-FINAL-FOLDER/" #Temporary final folder 1
 
 # For local/remote transfer, recommended max 2 transfer per drive/destination but best is 1 transfer per drive/destination
-TARGETd1="/mnt/disk-s9-9/" #Job 1 PRIMARY destination
-TARGET2d1="/mnt/disk-s9-9/" #Job 1 BACKUP destination
-TARGETd2="/mnt/disk-s9-9/" #Job 2 PRIMARY destination, point to a dummy folder with no files if you only have one temporary final folder
-TARGET2d2="/mnt/disk-s9-9/" #Job 2 PRIMARY destination, point to a dummy folder with no files if you only have one temporary final folder
+TARGETd1="/mnt/YOUR-PRIMARY-FINAL-FARMING-FOLDER/" #Job 1 PRIMARY destination
+TARGET2d1="/mnt/YOUR-BACKUP-FINAL-FARMING-FOLDER/" #Job 1 BACKUP destination
 
 # Choose your plot's size (size is in 1K blocks or 1024 bytes)
 #reqSpace=106400000 #k32
@@ -22,6 +17,3 @@ reqSpace=11500000 #k29
 
 # As rclone runs pretty fast, CTRL-C won't help and causes many partial transfer which need manual deletion, if you want to stop the transfer you can set this to 1
 QUITd1=0 #For Job 1
-QUITd2=0 #For Job 2
-
-echo "DEST Folder ==> (1) PRIMARY: $TARGETd1 BACKUP: $TARGET2d1 | (2) PRIMARY: $TARGETd2 BACKUP: $TARGET2d2"
