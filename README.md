@@ -13,4 +13,12 @@ Automate your plot transfer from temporary final folder to farming folder - supp
 7) Create a new tmux/screen session [OPTIONAL]
 8) `./upload1.sh`
 
+## Things to Note
+1) You DO NOT need to setup/create a rclone configuration
+2) Moving of transfer of plot will move to BACKUP destination when PRIMARY destination ran out of space or is less than required K size plot space you chosen in remote.sh
+3) Only one plot will be transfer/move at anytime/per rclone session
+4) Discord notification will not stop if you do not set a BACKUP destination folder
+5) If PRIMARY destination folder ran out of space, Discord will send you 5 notifications, make sure you have a BACKUP destination entered in remote.sh
+6) Please DO NOT enable your destination folder in config.yaml until it is fully filled with plots else it will affect your farming read time, YOU MIGHT BE LOSING REWARDS!
+
 Let me know if there's any issue.
