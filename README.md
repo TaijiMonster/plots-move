@@ -14,7 +14,7 @@ Automate your plot transfer from temporary final folder to farming folder - supp
 6) Edit `nano discordALERT.sh`, put in your own Discord webhook
 7) `sudo chmod +x *.sh`
 8) Create a new tmux/screen session [OPTIONAL]
-9) `./upload1.sh`
+9) Start the transfer `./upload.sh`
 
 ## Clean Installation from V1.0
 1) `rm -rf ~/plots-move`
@@ -26,7 +26,7 @@ Automate your plot transfer from temporary final folder to farming folder - supp
 7) Edit `nano discordALERT.sh`, put in your own Discord webhook
 8) `sudo chmod +x *.sh`
 9) Create a new tmux/screen session [OPTIONAL]
-10) `./upload1.sh`
+10) Start the transfer `./upload.sh`
 
 ## Things to Note
 1) You DO NOT need to setup/create a rclone configuration
