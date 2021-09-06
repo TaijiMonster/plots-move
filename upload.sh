@@ -17,6 +17,8 @@ do
                         DISCORD="*** $MACHINE WARNING NOTIFICATION #$outSpaced1*** $TARGETd1 - PRIMARY RAN OUT OF SPACE !!! *** WARNING ***"
                         source discord.sh "$DISCORD"
                 fi
+        while [ true ]
+        do
                 for FILE in $(ls $PLOT_PATHd1 -p | grep -v / | head -1)                
                 do
                         # check if there's quit loop command
@@ -39,6 +41,7 @@ do
                 sleep 30
                 clear
                 break
+        done
         else
                 for FILE in $(ls $PLOT_PATHd1 -p | grep -v / | head -1)                
                 do
