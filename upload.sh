@@ -1,6 +1,6 @@
 #!/bin/bash
-i="0"
-while [ $i -lt 4 ]
+
+while [ true ]
 do
         clear
         # read transfer folder
@@ -31,6 +31,7 @@ do
                                 echo "QUIT COMMAND INVOKED BY USER !!!"
                                 exit 1
                         fi
+                done
                 countd1=$(( $countd1+1 ))
                 echo -e "***$VERSION***\nRUN#$countd1 No BACKUP job | SOURCE: $PLOT_PATHd1 | DEST: $TARGET2d1, wait 30 seconds | BACKUP Space Available: $availSpaceBackup"
                 echo ""
