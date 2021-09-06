@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-VERSION="TaijiMonster Transfer 2.0"
-
 # Your machine name
 MACHINE="plotter-1"
 
