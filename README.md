@@ -1,6 +1,7 @@
 # Taiji Monster Plot Transfer 2.0
 ## Plots Move Tool - Single Temporary Final Destination
-Automate your plot transfer from temporary final folder to farming folder - support both local and remote.
+Automate your plot transfer from temporary final folder to farming folder - support both local and remote. 
+NO MORE troubles on stop/start plotting tool or keep changing config.yaml, NO MORE troubles on staring at farming drive space availability as you will be notified via Discord; set your plotting tool to infinite, whenever PRIMARY destination is full, it will transfer to BACKUP destination, you only need to edit remote.sh to add/change target destination.
 
 ***YOU MUST HAVE rclone, tmux/screen (optional) installed and a Discord Webhook***
 
