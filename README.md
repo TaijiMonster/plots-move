@@ -1,4 +1,4 @@
-# Plots Move Tool
+# Plots Move Tool - Single Temporary Final Destination
 Automate your plot transfer from temporary final folder to farming folder - support both local and remote.
 
 ***YOU MUST HAVE rclone, tmux/screen (optional) installed and a Discord Webhook***
@@ -10,8 +10,6 @@ Automate your plot transfer from temporary final folder to farming folder - supp
 4) Edit `nano remote.sh`, simple self explanatory notes in the file
 5) Edit `nano discord.sh`, put in your own Discord webhook
 6) `sudo chmod +x *.sh`
-7) Create a tmux/screeen session with 2 panes
-8) `./upload1.sh` # On first pane
-9) `./upload2.sh` # On second pane
+7) `./upload1.sh` # On first pane
 
 Let me know if there's any issue.
