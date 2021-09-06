@@ -18,9 +18,9 @@ do
                         source discord.sh "$DISCORD"
                 fi
         # second destination copy target
-        do
+#        do
                 for FILE in $(ls $PLOT_PATHd1 -p | grep -v / | head -1)                
-                do
+#                do
                         # check if there's quit loop command
                         if (( QUITd1 == 0 )); then
                                 echo -e "***$VERSION***\nDEST Folder ==> PRIMARY: $TARGETd1 BACKUP: $TARGET2d1\nUsing *BACKUP DESTINATION* $TARGET2d1 - CHANGE PRIMARY DESTINATION IMMEDIATELY !!!"
@@ -39,10 +39,10 @@ do
                 sleep 30
                 clear
                 break
-        done
+#        done
         else
                 for FILE in $(ls $PLOT_PATHd1 -p | grep -v / | head -1)                
-                do
+ #               do
                     if (( $availSpace > $reqSpace )); then # additional check to avoid there's plot immediately after current transfer and destination ran out of space
                         outSpaced1=0
                         countd1=0
@@ -65,7 +65,7 @@ do
                         fi
                         clear
                     fi
-                done
+#                done
                 clear
                 echo -e "***$VERSION***\nNo PRIMARY job | SOURCE: $PLOT_PATHd1 | DEST: $TARGETd1, wait 30 seconds | Space Available: $availSpace2 | BACKUP Space $TARGET2d1: $availSpaceBackup"
                 echo ""
