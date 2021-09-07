@@ -26,6 +26,7 @@ do
                                 fileToCopyd2=${allowedFilesd2%\.*}
                         else
                                 fileToCopyd2=${filesNumberd1%\.*}
+                        fi
                         for FILE in $(ls $PLOT_PATHd1 -p | grep -v / | head -$fileToCopyd2)                
                         do
                                 if (( $availSpaceBackup > $reqSpace )); then # additional check to avoid there's plot immediately after current transfer and destination ran out of space
@@ -59,6 +60,7 @@ do
                         fileToCopyd1=${allowedFilesd1%\.*}
                 else
                         fileToCopyd1=${filesNumberd1%\.*}
+                fi
                 for FILE in $(ls $PLOT_PATHd1 -p | grep -v / | head -$fileToCopyd1)
                 do
                     if (( $availSpace > $reqSpace )); then # additional check to avoid there's plot immediately after current transfer and destination ran out of space
