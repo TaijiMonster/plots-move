@@ -9,10 +9,11 @@ do
         # check disk space
         availSpace=$(df $TARGETd1 | awk 'NR==2 { print $4 }')
         availSpace2=$(df -h $TARGETd1 | awk 'NR==2 { print $4 }')
+        availSpaceBackupd2=$(df $TARGETd2 | awk 'NR==2 { print $4 }')
         availSpaceBackup=$(df -h $TARGET2d1 | awk 'NR==2 { print $4 }')
         filesNumberd1=$(find $PLOT_PATHd1. -type f -ls | wc -l)
         allowedFilesd1=$(( availSpace / reqSpace ))
-        allowedFilesd2=$(( availSpaceBackup / reqSpace ))        
+        allowedFilesd2=$(( availSpaceBackupd2 / reqSpace ))        
         if (( $availSpace < $reqSpace )); then
                 outSpaced1=$(( $outSpaced1+1 ))
                 if (( $outSpaced1 < 6 )); then # PRIMARY space out of space send notification for 5 times
