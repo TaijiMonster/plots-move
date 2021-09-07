@@ -11,6 +11,9 @@ do
         availSpace=$(df $TARGETd1 | awk 'NR==2 { print $4 }')
         availSpace2=$(df -h $TARGETd1 | awk 'NR==2 { print $4 }')
         availSpaceBackup=$(df -h $TARGET2d1 | awk 'NR==2 { print $4 }')
+        filesNumberd1=$(find $PLOT_PATHd1. -type f -ls | wc -l)
+        allowedFilesd1=$(( availSpace / reqSpace ))
+        allowedFilesd2=$(( availSpaceBackup / reqSpace ))        
         if (( $availSpace < $reqSpace )); then
                 outSpaced1=$(( $outSpaced1+1 ))
                 if (( $outSpaced1 < 6 )); then # PRIMARY space out of space send notification for 5 times
@@ -18,33 +21,46 @@ do
                         DISCORD="*** $MACHINE WARNING NOTIFICATION #$outSpaced1*** $TARGETd1 - PRIMARY RAN OUT OF SPACE !!! *** WARNING ***"
                         source discordALERT.sh "$DISCORD"
                 fi
-        while [ true ]
-        do
-                for FILE in $(ls $PLOT_PATHd1 -p | grep -v / | head -1)                
+                while [ true ]
                 do
-                        # check if there's quit loop command
-                        if (( QUITd1 == 0 )); then
-                                echo -e "***$VERSION***\nDEST Folder ==> PRIMARY: $TARGETd1 BACKUP: $TARGET2d1\nUsing *BACKUP DESTINATION* $TARGET2d1 | LEFT: $availSpaceBackup - CHANGE PRIMARY DESTINATION IMMEDIATELY !!!"
-                                rclone move --ignore-checksum --transfers=1 --no-traverse --progress $PLOT_PATHd1$FILE $TARGET2d1
-                                clear
-                                break
+                        if (( allowedFilesd2 < filesNumberd1 )); then
+                                fileToCopyd2=${allowedFilesd2%\.*}
                         else
-                                echo "QUIT COMMAND INVOKED BY USER !!!"
-                                exit 1
-                        fi
+                                fileToCopyd2=${filesNumberd1%\.*}
+                        for FILE in $(ls $PLOT_PATHd1 -p | grep -v / | head -$fileToCopyd2)                
+                        do
+                                if (( $availSpaceBackup > $reqSpace )); then # additional check to avoid there's plot immediately after current transfer and destination ran out of space
+                                        # check if there's quit loop command
+                                        if (( QUITd1 == 0 )); then
+                                                echo -e "***$VERSION***\nDEST Folder ==> PRIMARY: $TARGETd1 BACKUP: $TARGET2d1\nUsing *BACKUP DESTINATION* $TARGET2d1 | LEFT: $availSpaceBackup - CHANGE PRIMARY DESTINATION IMMEDIATELY !!!"
+                                                rclone move --ignore-checksum --transfers=1 --no-traverse --progress $PLOT_PATHd1$FILE $TARGET2d1
+                                                clear
+                                                break
+                                        else
+                                                echo "QUIT COMMAND INVOKED BY USER !!!"
+                                                exit 1
+                                        fi
+                                else
+                                        echo "BACKUP DESTINATION RAN OUT OF SPACE !!!"
+                                        exit
+                                fi
+                        done
+                        countd1=$(( $countd1+1 ))
+                        availSpaceBackup=$(df -h $TARGET2d1 | awk 'NR==2 { print $4 }')
+                        echo -e "***$VERSION***\nRUN#$countd1 No BACKUP job | SOURCE: $PLOT_PATHd1 | DEST: $TARGET2d1, wait 30 seconds | BACKUP Space Available: $availSpaceBackup"
+                        echo ""
+                        REFRESH=$(date -d "+30 seconds")
+                        echo "Next refresh at $REFRESH"
+                        sleep 30
+                        clear
+                        break
                 done
-                countd1=$(( $countd1+1 ))
-                availSpaceBackup=$(df -h $TARGET2d1 | awk 'NR==2 { print $4 }')
-                echo -e "***$VERSION***\nRUN#$countd1 No BACKUP job | SOURCE: $PLOT_PATHd1 | DEST: $TARGET2d1, wait 30 seconds | BACKUP Space Available: $availSpaceBackup"
-                echo ""
-                REFRESH=$(date -d "+30 seconds")
-                echo "Next refresh at $REFRESH"
-                sleep 30
-                clear
-                break
-        done
         else
-                for FILE in $(ls $PLOT_PATHd1 -p | grep -v / | head -1)                
+                if (( allowedFilesd1 < filesNumberd1 )); then
+                        fileToCopyd1=${allowedFilesd1%\.*}
+                else
+                        fileToCopyd1=${filesNumberd1%\.*}
+                for FILE in $(ls $PLOT_PATHd1 -p | grep -v / | head -$fileToCopyd1)
                 do
                     if (( $availSpace > $reqSpace )); then # additional check to avoid there's plot immediately after current transfer and destination ran out of space
                         outSpaced1=0
