@@ -30,7 +30,7 @@ do
                         fi
                         for FILE in $(ls $PLOT_PATHd1 -p | grep -v / | head -$fileToCopyd2)                
                         do
-                                if (( $availSpaceBackup2 > $reqSpace )); then # additional check to avoid there's plot immediately after current transfer and destination ran out of space
+                                if (( $availSpaceBackupd2 > $reqSpace )); then # additional check to avoid there's plot immediately after current transfer and destination ran out of space
                                         # check if there's quit loop command
                                         if (( QUITd1 == 0 )); then
                                                 echo -e "***$VERSION***\nDEST Folder ==> PRIMARY: $TARGETd1 BACKUP: $TARGET2d1\nUsing *BACKUP DESTINATION* $TARGET2d1 | LEFT: $availSpaceBackup - CHANGE PRIMARY DESTINATION IMMEDIATELY !!!"
