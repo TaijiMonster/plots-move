@@ -10,8 +10,7 @@ do
         # check disk space
         availSpace=$(df $TARGETd2 | awk 'NR==2 { print $4 }')
         availSpace2=$(df -h $TARGETd2 | awk 'NR==2 { print $4 }')
-        availSpaceBackup=$(df $TARGET2d2 | awk 'NR==2 { print $4 }')
-        availSpaceBackup2=$(df -h $TARGET2d2 | awk 'NR==2 { print $4 }')
+        availSpaceBackup=$(df -h $TARGET2d2 | awk 'NR==2 { print $4 }')
         filesNumberd1=$(find $PLOT_PATHd1. -type f -ls | wc -l)
         filesNumberd2=$(find $PLOT_PATHd2. -type f -ls | wc -l)
         filesNumber=$(( $filesNumberd1 + $filesNumberd2 ))
@@ -39,7 +38,7 @@ do
                         fi
                 done
                 countd2=$(( $countd2+1 ))
-                echo -e "***$VERSION***\nRUN#$countd2 No BACKUP job | SOURCE: $PLOT_PATHd2 | DEST: $TARGET2d2, wait 30 seconds | BACKUP Space Available: $availSpaceBackup2"
+                echo -e "***$VERSION***\nRUN#$countd2 No BACKUP job | SOURCE: $PLOT_PATHd2 | DEST: $TARGET2d2, wait 30 seconds | BACKUP Space Available: $availSpaceBackup"
                 echo ""
                 REFRESH=$(date -d "+30 seconds")
                 echo "Next refresh at $REFRESH"
@@ -50,6 +49,8 @@ do
         else
                 for FILE in $PLOT_PATHd2*.plot;
                 do
+                    source week1.sh
+                    availSpace=$(df $TARGETd2 | awk 'NR==2 { print $4 }')
                     if (( availSpace > ( $reqSpace * $filesNumber ) )) || (( $availSpace > $reqSpace )); then # additional check to avoid there's plot immediately after current transfer and destination ran out of space
                         outSpaced2=0
                         countd2=0
@@ -65,7 +66,7 @@ do
                         fi
 
                         # check space pre notification
-                        if (( availSpaceBackup < ( reqSpace*5 ) )) && [ "$TARGETd2" = "$TARGET2d2" ]; then
+                        if (( availSpace < ( reqSpace*5 ) )) && [ "$TARGETd2" = "$TARGET2d2" ]; then
                                 echo "LESS THAN 5 PLOTS' PRIMARY SPACE AVAILABLE - $availSpace2" >&2
                                 DISCORD2="*** $MACHINE (Job 2) PRE-WARNING *** $TARGETd1 LEFT LESS THAN 5 PLOTS' SPACE !!! *** PRE-WARNING ***"
                                 source discord.sh "$DISCORD2"
