@@ -10,7 +10,7 @@ do
         # check disk space
         availSpace=$(df $TARGETd2 | awk 'NR==2 { print $4 }')
         availSpace2=$(df -h $TARGETd2 | awk 'NR==2 { print $4 }')
-        availSpaceBackup=$(df -h $TARGET2d2 | awk 'NR==2 { print $4 }')
+        availSpaceBackup=$(df $TARGET2d2 | awk 'NR==2 { print $4 }')
         availSpaceBackup2=$(df -h $TARGET2d2 | awk 'NR==2 { print $4 }')
         filesNumberd1=$(find $PLOT_PATHd1. -type f -ls | wc -l)
         filesNumberd2=$(find $PLOT_PATHd2. -type f -ls | wc -l)
