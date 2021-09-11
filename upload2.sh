@@ -18,7 +18,7 @@ do
                 outSpaced2=$(( $outSpaced2+1 ))
                 if (( $outSpaced2 < 6 )); then #PRIMARY space out of space send notification for 5 times
                         echo "NOT ENOUGH SPACE" >&2
-                        DISCORD="*** $MACHINE (Job 2) WARNING NOTIFICATION #$outSpaced2*** $TARGETd1 - PRIMARY RAN OUT OF SPACE !!! *** WARNING ***"
+                        DISCORD="*** $MACHINE (Job 2) WARNING NOTIFICATION #$outSpaced2*** $TARGETd2 - PRIMARY RAN OUT OF SPACE !!! *** WARNING ***"
                         source discord.sh "$DISCORD"
                 fi
         # second destination copy target
@@ -68,7 +68,7 @@ do
                         # check space pre notification
                         if (( availSpace < ( reqSpace*5 ) )) && [ "$TARGETd2" = "$TARGET2d2" ]; then
                                 echo "LESS THAN 5 PLOTS' PRIMARY SPACE AVAILABLE - $availSpace2" >&2
-                                DISCORD2="*** $MACHINE (Job 2) PRE-WARNING *** $TARGETd1 LEFT LESS THAN 5 PLOTS' SPACE !!! *** PRE-WARNING ***"
+                                DISCORD2="*** $MACHINE (Job 2) PRE-WARNING *** $TARGETd2 LEFT LESS THAN 5 PLOTS' SPACE !!! *** PRE-WARNING ***"
                                 source discord.sh "$DISCORD2"
                         fi
                         clear
