@@ -43,6 +43,8 @@ do
                                         fi
                                 else
                                         echo "BACKUP DESTINATION RAN OUT OF SPACE !!!"
+                                        DISCORDterminate="*** $MACHINE WARNING NOTIFICATION - TRANSFER TERMINATED DUE TO ALL TARGET DESTINATION RAN OUT OF SPACE !!! *** WARNING ***"
+                                        source discordALERT.sh "$DISCORDterminate"
                                         exit
                                 fi
                         done
