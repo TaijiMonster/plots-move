@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Your machine name
 MACHINE="plotter-1"
+# Refresh/wait time in seconds after every transfer, set a lower number if your plotter is plotting fast
+WAITTIME=30
 
 # For single temporary final folders
 PLOT_PATHd1="/mnt/nvme/YOUR-TEMPORARY-FINAL-FOLDER/" #Temporary final folder 1
